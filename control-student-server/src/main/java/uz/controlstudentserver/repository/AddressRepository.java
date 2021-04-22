@@ -1,0 +1,12 @@
+package uz.controlstudentserver.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import uz.controlstudentserver.entity.Address;
+import uz.controlstudentserver.entity.Attachment;
+
+import java.util.UUID;
+
+@Repository
+public interface AddressRepository extends JpaRepository<Address, UUID> {
+}
