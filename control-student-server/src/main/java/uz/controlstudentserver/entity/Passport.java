@@ -43,6 +43,7 @@ public class Passport {
 
     private String docType;
 
+    @Column(unique = true)
     private String passportNumber;
 
     private String dataOfIssue;
@@ -50,5 +51,4 @@ public class Passport {
     private String dateOfExpire;
 
     private String authority;
-
 }

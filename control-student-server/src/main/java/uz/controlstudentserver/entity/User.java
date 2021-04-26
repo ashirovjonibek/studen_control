@@ -29,6 +29,7 @@ public class User implements UserDetails {
 
     private String lastName;
 
+    @Column(unique = true)
     private String username;
 
     private String password;
@@ -41,6 +42,12 @@ public class User implements UserDetails {
 
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Reference reference;
+
+    public User(String username, String password, Set<Role> roles) {
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
 
     public User(UUID id, String firstName, String lastName, String username, Set<Role> roles) {
         this.id = id;

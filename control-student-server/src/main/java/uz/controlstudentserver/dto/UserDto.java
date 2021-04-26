@@ -20,7 +20,15 @@ public class UserDto {
     private String lastName;
     private String username;
     private RoleName roleName;
+//    private List<Integer> roleIds;
+    private String password;
+    private UUID passportId;
+    private UUID referenceId;
     private List<RoleName> roleNameList;
+    private boolean accountNonBlocked;
+    private boolean accountNonExpired;
+    private boolean credentialNonExpired;
+    private boolean enabled;
 
     public UserDto(UUID id, String firstName, String lastName, String username, List<RoleName> roleNameList) {
         this.id = id;

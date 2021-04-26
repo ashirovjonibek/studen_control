@@ -24,11 +24,11 @@ public class ScheduleOfVisits {
     @ManyToOne(fetch = FetchType.LAZY)
     private User student;
 
+
+
     private String arrivalTime;
 
     private String delay;
-
-    private String departureTime;
 
     private String course_duration;
 

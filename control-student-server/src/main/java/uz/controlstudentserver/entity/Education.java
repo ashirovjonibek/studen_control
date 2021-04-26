@@ -6,12 +6,13 @@ import lombok.NoArgsConstructor;
 import uz.controlstudentserver.entity.enums.EduType;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class CompletedEducation {
+public class Education {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -21,11 +22,11 @@ public class CompletedEducation {
     @Enumerated(EnumType.STRING)
     private EduType eduType;
 
-    private String faculty;
+    private Long startDate;
 
-    private String direction;
+    private Long endDate;
 
-    private String startDate;
+    private int course_number;
 
-    private String endDate;
+    private boolean complete;
 }

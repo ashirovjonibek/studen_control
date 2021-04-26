@@ -34,12 +34,8 @@ public class Reference {
     private String political_party;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    private List<CompletedEducation> completedEducations;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<ProcessEducation> processEducations;
-
-    @ManyToMany(fetch = FetchType.LAZY)
     private List<LaborActivity> laborActivities;
 
+    @ManyToOne
+    private Groups groups;
 }
