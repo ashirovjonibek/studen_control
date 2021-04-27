@@ -26,8 +26,10 @@ public class Attachment {
 
     private String contentType;
 
-    private int size;
+    private long size;
 
-    private String path;
+    private String ext;
+
+    private byte[] bytes;
 
 }

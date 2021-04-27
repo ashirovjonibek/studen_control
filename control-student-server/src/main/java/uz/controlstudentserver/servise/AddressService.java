@@ -10,6 +10,7 @@ import uz.controlstudentserver.entity.enums.AddressType;
 import uz.controlstudentserver.payload.ApiResponse;
 import uz.controlstudentserver.repository.AddressRepository;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -45,5 +46,9 @@ public class AddressService {
             e.printStackTrace();
             return new ApiResponse("error",false);
         }
+    }
+
+    public List<Address> addresses(Iterable<UUID> uuids){
+        return addressRepository.findAllById(uuids);
     }
 }

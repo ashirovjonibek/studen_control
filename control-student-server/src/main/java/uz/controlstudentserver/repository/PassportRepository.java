@@ -9,5 +9,5 @@ import java.util.UUID;
 
 @Repository
 public interface PassportRepository extends JpaRepository<Passport, UUID> {
-
+    boolean existsByPassportNumber(String passportNumber);
 }

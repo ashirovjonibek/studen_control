@@ -15,9 +15,10 @@ public class AuthController {
     @Autowired
     AuthService authService;
 
-    @PostMapping("/login")
-    public HttpEntity<?> login(@RequestBody SignIn signIn){
-        ResToken resToken=authService.signIn(signIn);
+    @GetMapping("/login")
+    public HttpEntity<?> login(@RequestParam String un,@RequestParam String pr){
+
+        ResToken resToken=authService.signIn(new SignIn(un,pr));
         return ResponseEntity.status(resToken!=null?200:401).body(resToken);
     }
 
