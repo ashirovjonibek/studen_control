@@ -8,6 +8,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -21,15 +22,15 @@ public class ScheduleOfVisits {
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User student;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<User> student;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private User teacher;
 
+    private Long arrivalTime;
 
-    private String arrivalTime;
-
-    private String delay;
+    private Long delay;
 
     private String course_duration;
-
 }

@@ -37,4 +37,19 @@ public class UserDto {
         this.username = username;
         this.roleNameList = roleNameList;
     }
+
+    public UserDto(String firstName, String lastName, String username, RoleName roleName, String password, UUID passportId, UUID referenceId, List<RoleName> roleNameList, boolean accountNonBlocked, boolean accountNonExpired, boolean credentialNonExpired, boolean enabled) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.roleName = roleName;
+        this.password = password;
+        this.passportId = passportId;
+        this.referenceId = referenceId;
+        this.roleNameList = roleNameList;
+        this.accountNonBlocked = accountNonBlocked;
+        this.accountNonExpired = accountNonExpired;
+        this.credentialNonExpired = credentialNonExpired;
+        this.enabled = enabled;
+    }
 }

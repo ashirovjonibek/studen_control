@@ -18,9 +18,11 @@ public class Groups {
 
     private String number;
 
-    @ManyToOne
+    private int course_number;
+
+    @ManyToOne(fetch = FetchType.EAGER)
     private Direction direction;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<User> teachers;
 }

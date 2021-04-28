@@ -18,9 +18,6 @@ public class AttachmentService {
     @Autowired
     AttachmentRepository attachmentRepository;
 
-    @Value("${upload.folder}")
-    private String uploadFolder;
-
     public ApiResponse save(MultipartFile multipartFile) {
         Attachment attachment=new Attachment();
         attachment.setName(multipartFile.getOriginalFilename());

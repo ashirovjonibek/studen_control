@@ -21,19 +21,21 @@ public class Reference {
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Relations> relations;
 
     private String academicDegree;
 
     private String awards;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Party party;
 
     private String political_party;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    private String foreignLang;
+
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<LaborActivity> laborActivities;
 
     @ManyToOne

@@ -34,13 +34,13 @@ public class User implements UserDetails {
 
     private String password;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Passport passport;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Reference reference;
 
     public User(String username, String password, Set<Role> roles) {

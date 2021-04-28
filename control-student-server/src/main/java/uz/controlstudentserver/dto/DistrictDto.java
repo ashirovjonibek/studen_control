@@ -13,4 +13,9 @@ public class DistrictDto {
     private String name;
 
     private Integer regionId;
+
+    public DistrictDto(String name, Integer regionId) {
+        this.name = name;
+        this.regionId = regionId;
+    }
 }

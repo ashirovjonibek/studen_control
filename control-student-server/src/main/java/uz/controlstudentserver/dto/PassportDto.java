@@ -43,4 +43,21 @@ public class PassportDto {
     private String dateOfExpire;
 
     private String authority;
+
+    public PassportDto(String surname, String firstName, String fatherName, UUID attachmentId, String birthDate, String nationality, String issuing_authority, List<UUID> addresses, String sex, String docType, String passportNumber, String dataOfIssue, String dateOfExpire, String authority) {
+        this.surname = surname;
+        this.firstName = firstName;
+        this.fatherName = fatherName;
+        this.attachmentId = attachmentId;
+        this.birthDate = birthDate;
+        this.nationality = nationality;
+        this.issuing_authority = issuing_authority;
+        this.addresses = addresses;
+        this.sex = sex;
+        this.docType = docType;
+        this.passportNumber = passportNumber;
+        this.dataOfIssue = dataOfIssue;
+        this.dateOfExpire = dateOfExpire;
+        this.authority = authority;
+    }
 }

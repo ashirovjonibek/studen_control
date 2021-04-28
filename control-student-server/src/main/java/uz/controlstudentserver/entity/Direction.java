@@ -17,6 +17,6 @@ public class Direction {
 
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Faculty faculty;
 }

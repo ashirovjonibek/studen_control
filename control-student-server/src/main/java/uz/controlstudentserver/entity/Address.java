@@ -26,6 +26,6 @@ public class Address {
     @Enumerated(EnumType.STRING)
     private AddressType address_type;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private District district;
 }

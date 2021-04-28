@@ -5,9 +5,9 @@ import org.springframework.stereotype.Repository;
 import uz.controlstudentserver.entity.Relations;
 import uz.controlstudentserver.entity.ScheduleOfVisits;
 
+import java.util.List;
 import java.util.UUID;
 
 @Repository
 public interface RelationsRepository extends JpaRepository<Relations, UUID> {
-
 }

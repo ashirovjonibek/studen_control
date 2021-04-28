@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
@@ -28,11 +25,12 @@ public class Relations {
 
     private String kinship;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Address> addresses;
 
     private String job;
 
+    @Column(unique = true)
     private String eMail;
 
     private String birthDate;

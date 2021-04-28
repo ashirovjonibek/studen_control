@@ -3,18 +3,20 @@ package uz.controlstudentserver.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import uz.controlstudentserver.entity.Faculty;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegionDto {
-
+public class DirectionDto {
     private Integer id;
-    private String name;
-    private Integer countryId;
 
-    public RegionDto(String name, Integer countryId) {
+    private String name;
+
+    private Integer faculty;
+
+    public DirectionDto(String name, Integer faculty) {
         this.name = name;
-        this.countryId = countryId;
+        this.faculty = faculty;
     }
 }

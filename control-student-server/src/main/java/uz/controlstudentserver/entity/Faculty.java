@@ -17,6 +17,6 @@ public class Faculty {
 
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Education education;
 }

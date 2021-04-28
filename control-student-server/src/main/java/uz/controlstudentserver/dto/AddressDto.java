@@ -14,4 +14,10 @@ public class AddressDto {
     private String address;
     private Integer districtId;
     private String addrType;
+
+    public AddressDto(String address, Integer districtId, String addrType) {
+        this.address = address;
+        this.districtId = districtId;
+        this.addrType = addrType;
+    }
 }

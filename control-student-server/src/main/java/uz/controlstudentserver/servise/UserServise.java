@@ -10,10 +10,7 @@ import uz.controlstudentserver.payload.ApiResponse;
 import uz.controlstudentserver.repository.*;
 import uz.controlstudentserver.utils.CommonUtills;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -63,6 +60,16 @@ public class UserServise {
         }catch (Exception e){
             e.printStackTrace();
             return new ApiResponse("Userni saqlashda xatolik",false);
+        }
+    }
+
+    public ApiResponse getOne(UUID uuid){
+        try {
+            User user = userRepository.findById(uuid).orElseThrow(() -> new IllegalStateException("user not found"));
+            return new ApiResponse("ok",true,user);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ApiResponse("error",false);
         }
     }
 

@@ -30,7 +30,12 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         List<Role> roles=new ArrayList<>();
-        roles.add(roleRepository.save(new Role(RoleName.ROLE_ADMIN)));
+        Role role_admin = roleRepository.save(new Role(RoleName.ROLE_ADMIN));
+        roleRepository.save(new Role(RoleName.ROLE_TEACHER));
+        roleRepository.save(new Role(RoleName.ROLE_DEPUTY_DEAN));
+        roleRepository.save(new Role(RoleName.ROLE_DEAN));
+        roleRepository.save(new Role(RoleName.ROLE_STUDENT));
+        roles.add(roleRepository.save(role_admin));
         User admin=new User("admin", passwordEncoder.encode("admin"),new HashSet<>(roles));
         userRepository.save(admin);
     }
