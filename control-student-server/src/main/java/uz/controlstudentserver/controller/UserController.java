@@ -48,7 +48,7 @@ public class UserController {
        return ResponseEntity.ok(response);
    }
 
-   @PreAuthorize("hasAnyRole({'ROLE_ADMIN','ROLE_DEAN','ROLE_DEPUTY_DEAN','ROLE_TEACHER',})")
+   @PreAuthorize("hasAnyRole({'ROLE_ADMIN','ROLE_DEAN','ROLE_DEPUTY_DEAN','ROLE_TEACHER','ROLE_STUDENT'})")
    @GetMapping("/findById/{id}")
     public HttpEntity<?> findById(@PathVariable UUID id){
        ApiResponse one = userServise.getOne(id);
