@@ -23,6 +23,6 @@ public class Groups {
     @ManyToOne(fetch = FetchType.EAGER)
     private Direction direction;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<User> teachers;
 }

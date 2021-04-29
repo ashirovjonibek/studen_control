@@ -36,7 +36,7 @@ public class Passport {
 
     private String issuing_authority;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Address> address;
 
     private String sex;

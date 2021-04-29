@@ -21,7 +21,7 @@ public class Reference {
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Relations> relations;
 
     private String academicDegree;
@@ -35,7 +35,7 @@ public class Reference {
 
     private String foreignLang;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<LaborActivity> laborActivities;
 
     @ManyToOne
