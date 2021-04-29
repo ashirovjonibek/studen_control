@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import uz.controlstudentserver.dto.RelationsDto;
 import uz.controlstudentserver.payload.ApiResponse;
 import uz.controlstudentserver.servise.RelationService;
-
+@CrossOrigin
 @RestController
 @RequestMapping("api/relations")
 public class RelationController {

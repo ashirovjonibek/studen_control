@@ -11,15 +11,15 @@ import uz.controlstudentserver.servise.AuthService;
 
 @RestController
 @CrossOrigin
-@RequestMapping("auth/api")
+@RequestMapping("api/auth")
 public class AuthController {
     @Autowired
     AuthService authService;
 
     @GetMapping("/login")
-    public HttpEntity<?> login(@RequestParam String un,@RequestParam String pr){
+    public HttpEntity<?> login(@RequestBody SignIn signIn){
 
-        ResToken resToken=authService.signIn(new SignIn(un,pr));
+        ResToken resToken=authService.signIn(signIn);
         return ResponseEntity.status(resToken!=null?200:401).body(resToken);
     }
     @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")

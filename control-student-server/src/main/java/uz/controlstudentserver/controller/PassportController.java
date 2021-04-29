@@ -10,7 +10,7 @@ import uz.controlstudentserver.payload.ApiResponse;
 import uz.controlstudentserver.servise.PassportService;
 
 import java.util.UUID;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api/passport")
 public class PassportController {

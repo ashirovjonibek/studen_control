@@ -16,7 +16,7 @@ import uz.controlstudentserver.servise.AttachmentService;
 import java.net.MalformedURLException;
 import java.net.URLEncoder;
 import java.util.UUID;
-
+@CrossOrigin
 @RestController
 @RequestMapping("api/image")
 public class AttachmentController {

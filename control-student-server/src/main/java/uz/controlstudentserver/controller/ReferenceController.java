@@ -12,7 +12,7 @@ import uz.controlstudentserver.repository.ReferenceRepository;
 import uz.controlstudentserver.servise.ReferenceService;
 
 import java.util.UUID;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api/reference")
 public class ReferenceController {

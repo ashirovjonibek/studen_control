@@ -10,7 +10,7 @@ import uz.controlstudentserver.repository.UserRepository;
 import uz.controlstudentserver.servise.RaportService;
 
 import java.util.UUID;
-
+@CrossOrigin
 @RestController
 @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN','ROLE_TEACHER'})")
 @RequestMapping("api/raport")

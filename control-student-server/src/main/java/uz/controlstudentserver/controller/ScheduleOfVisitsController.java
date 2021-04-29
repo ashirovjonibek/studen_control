@@ -9,7 +9,7 @@ import uz.controlstudentserver.dto.ScheduleOfVisitsDto;
 import uz.controlstudentserver.servise.ScheduleOfVisitsService;
 
 import java.util.UUID;
-
+@CrossOrigin
 @RestController
 @RequestMapping("api/sov")
 public class ScheduleOfVisitsController {

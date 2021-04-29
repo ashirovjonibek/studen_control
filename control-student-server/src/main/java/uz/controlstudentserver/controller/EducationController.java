@@ -19,7 +19,7 @@ import uz.controlstudentserver.servise.FacultyService;
 import uz.controlstudentserver.servise.GroupService;
 
 import java.util.UUID;
-
+@CrossOrigin
 @RestController
 @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
 @RequestMapping("api/education")

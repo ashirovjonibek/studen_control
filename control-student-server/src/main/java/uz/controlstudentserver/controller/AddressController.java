@@ -16,7 +16,7 @@ import uz.controlstudentserver.servise.DistrictService;
 import uz.controlstudentserver.servise.RegionService;
 
 import java.util.UUID;
-
+@CrossOrigin
 @RestController
 @RequestMapping("api/address")
 public class AddressController {

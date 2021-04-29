@@ -7,7 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import uz.controlstudentserver.entity.Party;
 import uz.controlstudentserver.servise.PartyService;
-
+@CrossOrigin
 @RestController
 @RequestMapping("api/party")
 public class PartyController {

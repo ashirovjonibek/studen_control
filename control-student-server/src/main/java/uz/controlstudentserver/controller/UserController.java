@@ -14,7 +14,7 @@ import uz.controlstudentserver.payload.CurrentUser;
 import uz.controlstudentserver.servise.UserServise;
 
 import java.util.UUID;
-
+@CrossOrigin
 @RestController
 @RequestMapping("api/user")
 public class UserController {
