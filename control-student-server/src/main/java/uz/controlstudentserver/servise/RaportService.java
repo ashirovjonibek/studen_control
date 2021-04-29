@@ -97,7 +97,7 @@ public class RaportService {
                 .getFaculty()
                 .getEducation().getName()+
                 " dan bildirgi\n"+
-                "Bildirgi chiqarilgan vaqt: "+new DataFormat(new Date(raport.getReportDate()).toString())+"\n"+
+                "Bildirgi chiqarilgan vaqt: "+new Date(raport.getReportDate()).toString()+"\n"+
                 raport.getDescription()+"\n\n\n"+
                 "Bildirgi beruvchi shaxs: "+raport.getReporter().getFirstName()+" "+raport.getReporter().getLastName()
 
