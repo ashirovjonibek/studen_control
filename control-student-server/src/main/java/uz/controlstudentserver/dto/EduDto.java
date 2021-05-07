@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import uz.controlstudentserver.entity.enums.EduType;
 
+import java.util.UUID;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,6 +20,8 @@ public class EduDto {
     private Long startDate;
 
     private Long endDate;
+
+    private UUID addresId;
 
     private boolean complete;
 

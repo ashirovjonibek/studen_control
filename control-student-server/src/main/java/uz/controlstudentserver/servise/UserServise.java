@@ -30,6 +30,9 @@ public class UserServise {
     @Autowired
     GroupsRepository groupsRepository;
 
+    @Autowired
+    EducationService educationService;
+
 
     public ApiResponse saveOrEditUser(UserDto userDto){
         User user=new User();
@@ -41,14 +44,19 @@ public class UserServise {
             user.setLastName(userDto.getLastName());
             user.setPassword(userDto.getPassword());
             user.setUsername(userDto.getUsername());
-            Passport passport = passportRepository.findById(userDto.getId()).orElseThrow(() -> new IllegalStateException("Passport mavjud emas"));
-            user.setPassport(passport);
+            Passport passport = new Passport();
+            if (userDto.getPassportId()!=null)
+            {passport=passportRepository.findById(userDto.getPassportId()).orElseThrow(() -> new IllegalStateException("Passport mavjud emas"));
+            user.setPassport(passport);}
             user.setAccountNonBlocked(userDto.isAccountNonBlocked());
             user.setAccountNonExpired(userDto.isAccountNonExpired());
             user.setCredentialNonExpired(userDto.isCredentialNonExpired());
             user.setEnabled(userDto.isEnabled());
-            Reference reference = referenceRepository.findById(userDto.getReferenceId()).orElseThrow(() -> new IllegalStateException("Malumotnoma topilmadi"));
-            user.setReference(reference);
+            if (userDto.getEduId()!=null){
+                user.setEducation(((Education) educationService.getOne(userDto.getEduId()).getObject()));
+            }
+            if (userDto.getReferenceId()!=null){Reference reference = referenceRepository.findById(userDto.getReferenceId()).orElseThrow(() -> new IllegalStateException("Malumotnoma topilmadi"));
+            user.setReference(reference);}
             List<Role> roles=new ArrayList<>();
             for (int i = 0; i < userDto.getRoleNameList().size(); i++) {
                 roles.add(roleRepository.findByRoleName(userDto.getRoleNameList().get(i)));

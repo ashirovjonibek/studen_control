@@ -25,7 +25,7 @@ public class DirectionService {
                 direction=directionRepository.findById(directionDto.getId()).orElseThrow(()->new IllegalStateException("direction not found"));
             }
             direction.setName(directionDto.getName());
-            direction.setFaculty(((Faculty) facultyService.getOne(directionDto.getId()).getObject()));
+            direction.setFaculty(((Faculty) facultyService.getOne(directionDto.getFaculty()).getObject()));
             Direction save = directionRepository.save(direction);
             return new ApiResponse("ok",true,save);
         }catch (Exception e){

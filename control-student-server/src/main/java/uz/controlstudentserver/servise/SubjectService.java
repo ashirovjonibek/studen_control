@@ -14,6 +14,7 @@ import uz.controlstudentserver.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class SubjectService {
@@ -27,7 +28,6 @@ public class SubjectService {
     GroupsRepository groupsRepository;
 
     public ApiResponse saveOrEdit(SubjectDto dto){
-        List<User> users=new ArrayList<>();
         List<Groups> groups=new ArrayList<>();
         Subject subject=new Subject();
         if (dto.getId()!=null){
@@ -37,10 +37,10 @@ public class SubjectService {
             groups.add(groupsRepository.findById(dto.getGroupIds().get(i)).orElseThrow(()->new IllegalStateException("group not found")));
         }
         subject.setGroups(groups);
-        for (int i = 0; i < dto.getTeacherIds().size(); i++) {
-            users.add(userRepository.findById(dto.getTeacherIds().get(i)).orElseThrow(()->new IllegalStateException("user not found")));
-        }
-        subject.setTeachers(users);
+        List<User> teachers = subject.getTeachers();
+        teachers.add(userRepository.findById(dto.getTeacherIds()).orElseThrow(()->new IllegalStateException("user not found")));
+
+        subject.setTeachers(teachers);
         Subject save = subjectRepository.save(subject);
         return new ApiResponse("Success",true,save);
     }
@@ -53,6 +53,12 @@ public class SubjectService {
             e.printStackTrace();
             return new ApiResponse("Error",false);
         }
+    }
+
+    public ApiResponse findAllByTeacherId(UUID id){
+        return new ApiResponse("ok", true, subjectRepository.findAllByTeachers(
+                userRepository.findById(id).orElseThrow(()->new IllegalStateException("user not found for subject"))
+        ));
     }
 
     public ApiResponse findAll(){

@@ -2,6 +2,7 @@ package uz.controlstudentserver.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -10,15 +11,14 @@ import uz.controlstudentserver.payload.SignIn;
 import uz.controlstudentserver.servise.AuthService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("api/auth")
 public class AuthController {
     @Autowired
     AuthService authService;
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public HttpEntity<?> login(@RequestBody SignIn signIn){
-
         ResToken resToken=authService.signIn(signIn);
         return ResponseEntity.status(resToken!=null?200:401).body(resToken);
     }

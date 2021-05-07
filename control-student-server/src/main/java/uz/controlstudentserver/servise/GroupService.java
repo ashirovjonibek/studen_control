@@ -34,8 +34,10 @@ public class GroupService {
             groups.setDirection(((Direction) directionService.getOne(dto.getDirectionId()).getObject()));
             groups.setNumber(dto.getNumber());
             List<User> users=new ArrayList<>();
-            for (int i = 0; i < dto.getTeachersIds().size(); i++) {
-                users.add(userRepository.findById(dto.getTeachersIds().get(i)).orElseThrow(()->new IllegalStateException("User Not found")));
+            if (dto.getTeachersIds()!=null){
+                for (int i = 0; i < dto.getTeachersIds().size(); i++) {
+                    users.add(userRepository.findById(dto.getTeachersIds().get(i)).orElseThrow(()->new IllegalStateException("User Not found")));
+                }
             }
             groups.setTeachers(users);
             Groups save = groupsRepository.save(groups);

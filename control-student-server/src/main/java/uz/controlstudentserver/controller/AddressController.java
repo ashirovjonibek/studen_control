@@ -16,7 +16,7 @@ import uz.controlstudentserver.servise.DistrictService;
 import uz.controlstudentserver.servise.RegionService;
 
 import java.util.UUID;
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("api/address")
 public class AddressController {
@@ -31,29 +31,30 @@ public class AddressController {
 
     @Autowired
     CountryService countryService;
-    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
+//    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
     @PostMapping("/saveOrEditCountry")
     public HttpEntity<?> saveCountry(@RequestBody Country country){
         ApiResponse response = countryService.saveOrEdit(country);
         return ResponseEntity.ok(response);
     }
-    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
+//    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
     @GetMapping("/getAllCountry")
     public HttpEntity<?> getAllCountry(){
         return ResponseEntity.ok(countryService.findAll());
     }
-    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
+
+//    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
     @GetMapping("/getById/{id}")
     public HttpEntity<?> getByCountryId(@PathVariable Integer id){
         return ResponseEntity.ok(countryService.getOne(id));
     }
-    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
+//    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
     @PostMapping("/saveOrEditRegion")
     public HttpEntity<?> saveOrEditRegion(@RequestBody RegionDto dto){
         ApiResponse response = regionService.saveOrEdit(dto);
         return ResponseEntity.ok(response);
     }
-    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
+//    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
     @GetMapping("/getAllRegion")
     public HttpEntity<?> getAllRegion(){
         return ResponseEntity.ok(regionService.findAll());
@@ -64,30 +65,33 @@ public class AddressController {
         ApiResponse one = regionService.getOne(id);
         return ResponseEntity.ok(one);
     }
-    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
+//    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
     @PostMapping("/saveOrEditDistrict")
     public HttpEntity<?> saveOrEditDistrict(@RequestBody DistrictDto dto){
         ApiResponse response = districtService.saveOrEdit(dto);
         return ResponseEntity.ok(response);
     }
-    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
-    @GetMapping("/getAllDirection")
-    public HttpEntity<?> getAllDirection(){
+//    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
+    @GetMapping("/getAllDistrict")
+    public HttpEntity<?> getAllDistrict(){
         return ResponseEntity.ok(districtService.findAll());
     }
-    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
-    @GetMapping("/getByIdDirection/{id}")
-    public HttpEntity<?> getByIdDirection(@PathVariable Integer id){
+
+//    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
+    @GetMapping("/getByIdDistrict/{id}")
+    public HttpEntity<?> getByIdDistrict(@PathVariable Integer id){
         ApiResponse one = districtService.getOne(id);
         return ResponseEntity.ok(one);
     }
-    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
+
+//    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
     @PostMapping("/saveOrEditAddress")
     public HttpEntity<?> saveOrEditAddress(@RequestBody AddressDto dto){
         ApiResponse response = addressService.saveOrEdit(dto);
         return ResponseEntity.ok(response);
     }
-    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
+
+//    @PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
     @GetMapping("/getAddressById/{id}")
     public HttpEntity<?> getAddressById(@PathVariable UUID id){
         return ResponseEntity.ok(addressService.getOne(id));

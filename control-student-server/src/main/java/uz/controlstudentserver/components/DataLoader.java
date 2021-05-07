@@ -1,6 +1,7 @@
 package uz.controlstudentserver.components;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -21,6 +22,9 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     UserRepository userRepository;
 
+    @Value("${spring.jpa.hibernate.ddl-auto}")
+    private String ddlAuto;
+
     @Autowired
     PasswordEncoder passwordEncoder;
 
@@ -29,14 +33,16 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        List<Role> roles=new ArrayList<>();
-        Role role_admin = roleRepository.save(new Role(RoleName.ROLE_ADMIN));
-        roleRepository.save(new Role(RoleName.ROLE_TEACHER));
-        roleRepository.save(new Role(RoleName.ROLE_DEPUTY_DEAN));
-        roleRepository.save(new Role(RoleName.ROLE_DEAN));
-        roleRepository.save(new Role(RoleName.ROLE_STUDENT));
-        roles.add(roleRepository.save(role_admin));
-        User admin=new User("admin", passwordEncoder.encode("admin"),new HashSet<>(roles));
-        userRepository.save(admin);
+        if (ddlAuto.equals("create")){
+            List<Role> roles=new ArrayList<>();
+            Role role_admin = roleRepository.save(new Role(RoleName.ROLE_ADMIN));
+            roleRepository.save(new Role(RoleName.ROLE_TEACHER));
+            roleRepository.save(new Role(RoleName.ROLE_DEPUTY_DEAN));
+            roleRepository.save(new Role(RoleName.ROLE_DEAN));
+            roleRepository.save(new Role(RoleName.ROLE_STUDENT));
+            roles.add(roleRepository.save(role_admin));
+            User admin=new User("admin", passwordEncoder.encode("admin"),new HashSet<>(roles));
+            userRepository.save(admin);
+        }
     }
 }

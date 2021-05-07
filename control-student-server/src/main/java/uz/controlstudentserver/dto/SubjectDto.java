@@ -17,9 +17,9 @@ public class SubjectDto {
 
     private List<Integer> groupIds;
 
-    private List<UUID> teacherIds;
+    private UUID teacherIds;
 
-    public SubjectDto(String name, List<Integer> groupIds, List<UUID> teacherIds) {
+    public SubjectDto(String name, List<Integer> groupIds, UUID teacherIds) {
         this.name = name;
         this.groupIds = groupIds;
         this.teacherIds = teacherIds;

@@ -40,6 +40,9 @@ public class User implements UserDetails {
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Passport passport;
 
+    @ManyToOne
+    Education education;
+
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Reference reference;
 

@@ -26,5 +26,8 @@ public class Education {
 
     private Long endDate;
 
+    @OneToOne
+    private Address address;
+
     private boolean complete;
 }

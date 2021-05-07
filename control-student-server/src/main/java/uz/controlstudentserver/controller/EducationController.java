@@ -5,23 +5,18 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import uz.controlstudentserver.dto.DirectionDto;
-import uz.controlstudentserver.dto.EduDto;
-import uz.controlstudentserver.dto.FacultyDto;
-import uz.controlstudentserver.dto.GroupDto;
+import uz.controlstudentserver.dto.*;
 import uz.controlstudentserver.entity.Direction;
 import uz.controlstudentserver.entity.Education;
 import uz.controlstudentserver.entity.Faculty;
+import uz.controlstudentserver.repository.SubjectRepository;
 import uz.controlstudentserver.repository.UserRepository;
-import uz.controlstudentserver.servise.DirectionService;
-import uz.controlstudentserver.servise.EducationService;
-import uz.controlstudentserver.servise.FacultyService;
-import uz.controlstudentserver.servise.GroupService;
+import uz.controlstudentserver.servise.*;
 
 import java.util.UUID;
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
+//@PreAuthorize("hasAnyRole({'ROLE_DEAN','ROLE_DEPUTY_DEAN'})")
 @RequestMapping("api/education")
 public class EducationController {
 
@@ -39,6 +34,12 @@ public class EducationController {
 
     @Autowired
     GroupService groupService;
+
+    @Autowired
+    SubjectService subjectService;
+
+    @Autowired
+    SubjectRepository subjectRepository;
 
 
     //for education entity
@@ -111,5 +112,21 @@ public class EducationController {
         return ResponseEntity.ok(groupService.findByTeacher(userRepository.findById(id).orElseThrow(()->new IllegalStateException("user nor found for group teacher"))));
     }
 
+    @GetMapping("/getAllSubjectByTeacherId/{id}")
+    public HttpEntity<?> getAllSubjectByTeacherId(@PathVariable UUID id){
+        return ResponseEntity.ok(
+                subjectService.findAllByTeacherId(id)
+        );
+    }
+
+    @PostMapping("/saveOrEditSubject")
+    public HttpEntity<?> saveOrEditSubject(@RequestBody SubjectDto dto){
+        return ResponseEntity.ok(subjectService.saveOrEdit(dto));
+    }
+
+    @GetMapping("existsByName/{name}")
+    public HttpEntity<?> existsByName(@PathVariable String name){
+        return ResponseEntity.ok(subjectRepository.existsByName(name));
+    }
 
 }

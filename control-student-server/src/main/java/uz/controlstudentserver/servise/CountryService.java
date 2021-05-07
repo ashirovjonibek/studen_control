@@ -22,19 +22,19 @@ public class CountryService {
 
     public ApiResponse getOne(Integer id){
         try {
-            return new ApiResponse("success save country",true,countryRepository.findById(id).orElseThrow(()->new IllegalStateException("country not found")));
+            return new ApiResponse("ok",true,countryRepository.findById(id).orElseThrow(()->new IllegalStateException("country not found")));
         }catch (Exception e){
             e.printStackTrace();
-            return new ApiResponse("error save country",false);
+            return new ApiResponse("error",false);
         }
     }
 
     public ApiResponse findAll(){
         try {
-            return new ApiResponse("success save country",true,countryRepository.findAll());
+            return new ApiResponse("ok",true,countryRepository.findAll());
         }catch (Exception e){
             e.printStackTrace();
-            return new ApiResponse("error save country",false);
+            return new ApiResponse("error",false);
         }
     }
 }

@@ -3,6 +3,7 @@ package uz.controlstudentserver.servise;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import uz.controlstudentserver.dto.EduDto;
+import uz.controlstudentserver.entity.Address;
 import uz.controlstudentserver.entity.Education;
 import uz.controlstudentserver.payload.ApiResponse;
 import uz.controlstudentserver.repository.EducationRepository;
@@ -12,11 +13,17 @@ public class EducationService {
     @Autowired
     EducationRepository educationRepository;
 
+    @Autowired
+    AddressService addressService;
+
     public ApiResponse saveOrEdit(EduDto dto){
         try {
             Education education=new Education();
             if (dto.getId()!=null){
                 education=educationRepository.findById(dto.getId()).orElseThrow(()->new IllegalStateException("edu not found"));
+            }
+            if (dto.getAddresId()!=null){
+                education.setAddress(((Address) addressService.getOne(dto.getAddresId()).getObject()));
             }
             education.setComplete(dto.isComplete());
             education.setEduType(dto.getEduType());
